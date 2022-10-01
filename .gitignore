@@ -87,6 +87,10 @@ target/
 profile_default/
 ipython_config.py
 
+# Vim
+**/*.swp
+Session.vim
+
 # pyenv
 .python-version
 
