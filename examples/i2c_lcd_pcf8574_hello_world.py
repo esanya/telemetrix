@@ -30,21 +30,28 @@ def pcf8574(board):
     lcd.begin()
     lcd.noBacklight()
 
-    lcd.print("     Hello") # You can make spaces using well... spaces
-    lcd.setCursor(5, 1) # Or setting the cursor in the desired position.
-    lcd.print("World!")
-    lcd.delayMiliseconds(500)
-
     # Flashing the backlight
     for i in range(5):
         lcd.backlight()
-        lcd.delayMiliseconds(500)
+        time.sleep(1)
         lcd.noBacklight()
-        lcd.delayMiliseconds(500)
+        time.sleep(1)
 
-    lcd.backlight()
-    lcd.clear()
-    lcd.delayMiliseconds(500)
+#    lcd.print("     Hello") # You can make spaces using well... spaces
+#    lcd.setCursor(5, 1) # Or setting the cursor in the desired position.
+#    lcd.print("World!")
+#    lcd.delayMiliseconds(500)
+#
+#    # Flashing the backlight
+#    for i in range(5):
+#        lcd.backlight()
+#        lcd.delayMiliseconds(500)
+#        lcd.noBacklight()
+#        lcd.delayMiliseconds(500)
+#
+#    lcd.backlight()
+#    lcd.clear()
+#    lcd.delayMiliseconds(500)
 
 
 board = telemetrix.Telemetrix()
