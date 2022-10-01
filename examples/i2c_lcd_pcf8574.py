@@ -86,18 +86,18 @@ class LCD_I2C(object):
 #        if (beginWire):
 #            Wire.begin()
     
-        self.I2C_Write(0b00000000); # Clear i2c adapter
-        self.delayMiliseconds(50); #Wait more than 40ms after powerOn.
+        self.I2C_Write(0b00000000) # Clear i2c adapter
+        self.delayMiliseconds(50) #Wait more than 40ms after powerOn.
     
         self.InitializeLCD()
 
     def backlight(self):
         self._output.Led = 1
-        self.I2C_Write(0b00000000 | self._output.Led << 3); # Led pin is independent from LCD data and control lines.
+        self.I2C_Write(0b00000000 | self._output.Led << 3) # Led pin is independent from LCD data and control lines.
 
     def noBacklight(self):
         self._output.Led = 0
-        self.I2C_Write(0b00000000 | self._output.Led << 3); # Led pin is independent from LCD data and control lines.
+        self.I2C_Write(0b00000000 | self._output.Led << 3) # Led pin is independent from LCD data and control lines.
 
     def clear(self):
         self._output.rs = 0
@@ -242,7 +242,7 @@ class LCD_I2C(object):
         for i in charmap:
             self.write(i)
     
-        self.setCursor(0, 0); # Set the address pointer back to the DDRAM
+        self.setCursor(0, 0) # Set the address pointer back to the DDRAM
 
 # Set DDRAM address
     def setCursor(self, col, row):
@@ -281,9 +281,9 @@ class LCD_I2C(object):
         self.delayMicroseconds(150)
         self.LCD_Write(0b00110000, True)
         self.delayMicroseconds(37)
-        self.LCD_Write(0b00100000, True); # Function Set - 4 bits mode
+        self.LCD_Write(0b00100000, True) # Function Set - 4 bits mode
         self.delayMicroseconds(37)
-        self.LCD_Write(0b00101000); # Function Set - 4 bits(Still), 2 lines, 5x8 font
+        self.LCD_Write(0b00101000) # Function Set - 4 bits(Still), 2 lines, 5x8 font
         self.delayMicroseconds(37)
     
         self.display()
@@ -301,22 +301,22 @@ class LCD_I2C(object):
     
         self._output.E = True
         self.I2C_Write(self._output.GetHighData())
-        self.delayMicroseconds(1); # High part of enable should be >450 nS
+        self.delayMicroseconds(1) # High part of enable should be >450 nS
     
         self._output.E = False
         self.I2C_Write(self._output.GetHighData())
     
         # During initialization we only send half a byte
         if (not(initialization)):
-            self.delayMicroseconds(37); # I think we need a delay between half byte writes, but no sure how long it needs to be.
+            self.delayMicroseconds(37) # I think we need a delay between half byte writes, but no sure how long it needs to be.
     
             self._output.E = True
             self.I2C_Write(self._output.GetLowData())
-            self.delayMicroseconds(1); # High part of enable should be >450 nS
+            self.delayMicroseconds(1) # High part of enable should be >450 nS
     
             self._output.E = False
             self.I2C_Write(self._output.GetLowData())
-        #self.delayMicroseconds(37); # Some commands have different timing requirement,
+        #self.delayMicroseconds(37) # Some commands have different timing requirement,
                                  # so every command should handle its own delay after execution
 
 
