@@ -86,6 +86,7 @@ class LCD_I2C(object):
 #        if (beginWire):
 #            Wire.begin()
     
+        self.delayMiliseconds(50) #Wait more than 40ms after powerOn.
         self.I2C_Write(0b00000000) # Clear i2c adapter
         self.delayMiliseconds(50) #Wait more than 40ms after powerOn.
     
@@ -329,7 +330,6 @@ class LCD_I2C(object):
     def print(self, text):
         for c in bytearray(text, 'ASCII'):
             self.write(c)
-#            self.
 
 
 

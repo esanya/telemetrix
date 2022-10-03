@@ -28,17 +28,18 @@ This example sets up and control an pcf8574 i2c LCD display.
 def pcf8574(board):
     lcd = LCD_I2C(board)
     lcd.begin()
-    lcd.noBacklight()
+    lcd.clear()
 
     # Flashing the backlight
     for i in range(5):
-        lcd.backlight()
-        time.sleep(1)
         lcd.noBacklight()
         time.sleep(1)
+        lcd.backlight()
+        time.sleep(1)
 
-#    lcd.print("     Hello") # You can make spaces using well... spaces
-#    lcd.setCursor(5, 1) # Or setting the cursor in the desired position.
+
+    lcd.print("     Hello") # You can make spaces using well... spaces
+    lcd.setCursor(5, 1) # Or setting the cursor in the desired position.
 #    lcd.print("World!")
 #    lcd.delayMiliseconds(500)
 #
